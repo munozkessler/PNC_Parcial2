@@ -108,7 +108,7 @@ public class MainController {
 			}
 			
 			mav.addObject("categorias", categorias);
-			mav.setViewName("index");
+			mav.setViewName("ingresarLibro");
 		}
 		else 
 		{
@@ -117,6 +117,24 @@ public class MainController {
 			mav.addObject("libroIngresado", true);
 			mav.setViewName("index");
 		}
+		
+		return mav;
+	}
+	
+	@RequestMapping("/verLibros")
+	public ModelAndView verLibros() {
+		ModelAndView mav = new ModelAndView();
+		List<Libro> libros = null;
+		
+		try {
+			libros = libroService.findAll();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		mav.addObject("libros", libros);
+		mav.setViewName("verLibros");
 		
 		return mav;
 	}

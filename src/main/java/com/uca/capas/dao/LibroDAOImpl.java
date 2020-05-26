@@ -1,7 +1,9 @@
 package com.uca.capas.dao;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -42,8 +44,10 @@ public class LibroDAOImpl implements LibroDAO{
 		try {
 			if(libro.getC_libro() == null) 
 			{
-				long millis=System.currentTimeMillis();  
-				libro.setF_ingreso(new Timestamp(Calendar.getInstance().getTime().getTime()));
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa");
+				Date date = new Date(System.currentTimeMillis());
+				 
+				libro.setF_ingreso(date);
 				entityManager.persist(libro);
 			}
 			else 

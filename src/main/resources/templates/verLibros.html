@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlms:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Ver libros</title>
+</head>
+<body>
+
+	<table class="table table-bordered">
+		<thead class="thead-light">
+			<th scope="col">Titulo</th>
+			<th scope="col">Autor</th>
+			<th scope="col">ISBN</th>
+			<th scope="col">Categoria</th>
+			<th scope="col">Estado</th>
+			<th scope="col">Fecha Ingreso</th>
+
+		</thead>
+		<th:block th:each="libro,row:${libros}">
+			<tr>
+				<th scope="row" th:text="${libro.s_titulo}"/>
+				<th scope="row" th:text="${libro.s_autor}"/>
+				<th scope="row" th:text="${libro.s_isbn}"/>
+				<th scope="row" th:text="${libro.categoria.s_categoria}"/>
+				<th scope="row" th:text="${libro.b_estado}"/>
+				<th scope="row" th:text="${libro.fechaIngresoDelegate}"/>
+			</tr>
+		</th:block>	
+	</table>
+	
+
+</body>
+</html>

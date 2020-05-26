@@ -32,18 +32,18 @@ public class Libro {
 	private Integer c_libro;
 	
 	@Column(name="s_titulo")
-	@Size(max=500,message="No puede ser mayor a 500")
-	@NotEmpty(message="No puede estar vacio")
+	@Size(max=500,message="El campo sobrepasa la cantidad de 500 caracteres")
+	@NotEmpty(message="El campo no puede estar vacio")
 	private String s_titulo;
 	
 	@Column(name="s_autor")
-	@Size(max=150,message="No puede ser mayor a 150")
-	@NotEmpty(message="No puede estar vacio")
+	@Size(max=150,message="El campo sobrepasa la cantidad de 150 caracteres")
+	@NotEmpty(message="El campo no puede estar vacio")
 	private String s_autor;
 	
 	@Column(name="s_isbn")
-	@Size(max=10,message="No puede ser mayor a 10")
-	@NotEmpty(message="No puede estar vacio")
+	@Size(max=10,message="El campo sobrepasa la cantidad de 10 caracteres")
+	@NotEmpty(message="El campo no puede estar vacio")
 	private String s_isbn;
 	
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
