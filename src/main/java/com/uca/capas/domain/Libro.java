@@ -54,7 +54,7 @@ public class Libro {
 	private Integer c_categoriafk;
 	
 	@Column(name="f_ingreso")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm aa")
 	@Temporal(TemporalType.DATE)
 	private Date f_ingreso;
 	
@@ -134,7 +134,7 @@ public class Libro {
 			return "";
 		}
 		else{
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa");
 			String shortdate = sdf.format(this.f_ingreso.getTime());
 			return shortdate;
 		}

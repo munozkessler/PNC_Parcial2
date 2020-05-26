@@ -44,10 +44,8 @@ public class LibroDAOImpl implements LibroDAO{
 		try {
 			if(libro.getC_libro() == null) 
 			{
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm aa");
-				Date date = new Date(System.currentTimeMillis());
-				 
-				libro.setF_ingreso(date);
+				long millis=System.currentTimeMillis();  
+				libro.setF_ingreso(new Timestamp(Calendar.getInstance().getTime().getTime()));
 				entityManager.persist(libro);
 			}
 			else 
