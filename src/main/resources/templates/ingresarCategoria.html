@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Ingresar Categoria</title>
+</head>
+<body>
+
+
+	<form th:action="@{/formCategoria}"  method="post" th:object="${categoria}">
+		<div class="form group">
+		
+			<label>Nombre Categoria:</label>
+			<input class="form-control" type="text" name="s_categoria" th:field="${categoria.s_categoria}" >
+			<span th:errors="*{s_categoria}" style="color:#ae3232;"></span><br>
+			
+		</div>
+		<input type="submit" class="btn btn-success" value="Guardar Categoria">
+	</form>
+
+
+</body>
+</html>
