@@ -13,5 +13,14 @@
 	<br><button class="btn btn-secondary" onclick="window.location.href='/ingresarLibro'">Ingresar Libro</button><br>
 	<br><button class="btn btn-secondary" onclick="window.location.href='/verLibros'">Ver Libros</button><br>
 
+
+	<th:block th:if="${categoriaIngresada}">
+       <div class="alert alert-success" role="alert">
+         Categoria guardada con exito
+       </div>
+       
+      
+     </th:block>
+
 </body>
 </html>

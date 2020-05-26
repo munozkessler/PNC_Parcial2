@@ -57,7 +57,7 @@ public class MainController {
 		else {
 			
 		    categoriaService.save(categoria);
-		    
+		    mav.addObject("categoriaIngresada", true);
 			mav.setViewName("index");
 		}
 		
