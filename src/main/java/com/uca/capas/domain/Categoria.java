@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -14,8 +15,9 @@ import javax.validation.constraints.Size;
 public class Categoria {
 
 	@Id
+	@GeneratedValue(generator="cat_categoria_c_categoria_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(name = "cat_categoria_c_categoria_seq", sequenceName = "public.cat_categoria_c_categoria_seq", allocationSize = 1)
 	@Column(name="c_categoria")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer c_categoria;
 	
 	@Column(name="s_categoria")
@@ -39,6 +41,10 @@ public class Categoria {
 
 	public void setS_categoria(String s_categoria) {
 		this.s_categoria = s_categoria;
+	}
+	
+	public Categoria() {
+		super();
 	}
 	
 }

@@ -18,13 +18,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.uca.capas.domain.Categoria;
+import com.uca.capas.domain.Libro;
 import com.uca.capas.service.CategoriaService;
+import com.uca.capas.service.LibroService;
 
 @Controller
 public class MainController {
 
 	@Autowired
 	CategoriaService categoriaService;
+	
+	@Autowired
+	LibroService libroService;
 	
 	@RequestMapping("/index")
 	public ModelAndView index() {
@@ -65,6 +70,57 @@ public class MainController {
 		return mav;
 
 	}
+	
+	@RequestMapping("/ingresarLibro")
+	public ModelAndView ingresarLibro() 
+	{
+		ModelAndView mav = new ModelAndView();
+		Libro libro = new Libro();
+		List<Categoria> categorias = null;
+		
+		try {
+			categorias = categoriaService.findAll();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		mav.addObject("libro", libro);
+		mav.addObject("categorias", categorias);
+		mav.setViewName("ingresarLibro");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/formLibro")
+	public ModelAndView save(@Valid @ModelAttribute Libro libro, BindingResult result) {
+		ModelAndView mav = new ModelAndView();
+
+		if(result.hasErrors()) 
+		{
+			List<Categoria> categorias = null;
+			
+			try {
+				categorias = categoriaService.findAll();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			mav.addObject("categorias", categorias);
+			mav.setViewName("index");
+		}
+		else 
+		{
+			
+			libroService.save(libro);
+			mav.addObject("libroIngresado", true);
+			mav.setViewName("index");
+		}
+		
+		return mav;
+	}
+	
 	
 	
 }

@@ -1,0 +1,48 @@
+  
+<!DOCTYPE html>
+<html xmlms:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<meta charset="ISO-8859-1">
+<title>Ingresar Libro</title>
+</head>
+<body>
+
+		<form th:action="@{/formLibro}"  method="post" th:object="${libro}">
+			<div class="form group">
+			
+				<label>Titulo:</label>
+				<input class="form-control" type="text" name="s_titulo" th:field="${libro.s_titulo}">
+				<span th:errors="*{s_titulo}" style="color:#ae3232;"></span><br>
+				
+				<label>Autor:</label>
+				<input class="form-control" type="text" name="s_autor" th:field="${libro.s_autor}">
+				<span th:errors="*{s_autor}" style="color:#ae3232;"></span><br>
+				
+				<label>ISBN:</label>
+				<input class="form-control" type="text" name="s_isbn" th:field="${libro.s_isbn}">
+				<span th:errors="*{s_isbn}" style="color:#ae3232;"></span><br>
+				
+				<label>Categoria:</label>
+				<select class="form-control form-control-lg" th:field="*{categoria.c_categoria}">
+		  			<option th:each="categoria : ${categorias}" 
+		  					th:value=${categoria.c_categoria} 
+		  					th:text="${categoria.s_categoria}">
+		  			</option>	
+				</select><br><br>
+				
+				
+					<label>Estado:</label>
+					<input type="checkbox"  th:field="*{b_estado}" th:value="${true}">
+					<br>
+					
+					
+				
+				
+			</div>
+			
+			<input type="submit" class="btn btn-success" value="Guardar Libro">
+		</form>
+	
+	</body>
+</html>

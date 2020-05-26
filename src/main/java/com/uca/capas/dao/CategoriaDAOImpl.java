@@ -21,7 +21,7 @@ public class CategoriaDAOImpl implements CategoriaDAO{
 	@Override
 	public List<Categoria> findAll() throws DataAccessException {
 		StringBuffer sb =  new StringBuffer();
-		sb.append("select * from examen.cat_categoria");
+		sb.append("select * from public.cat_categoria");
 		Query  query = entityManager.createNativeQuery(sb.toString(),Categoria.class);
 		List<Categoria>resultset=query.getResultList();
 		return resultset;
