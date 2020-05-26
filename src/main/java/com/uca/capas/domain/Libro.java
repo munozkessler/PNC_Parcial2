@@ -1,5 +1,6 @@
 package com.uca.capas.domain;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,9 +55,7 @@ public class Libro {
 	private Integer c_categoriafk;
 	
 	@Column(name="f_ingreso")
-	@DateTimeFormat(pattern = "dd/MM/yyyy hh:mm aa")
-	@Temporal(TemporalType.DATE)
-	private Date f_ingreso;
+	private Timestamp  f_ingreso;
 	
 	public String getS_isbn() {
 		return s_isbn;
@@ -125,7 +124,7 @@ public class Libro {
 		return f_ingreso;
 	}
 
-	public void setF_ingreso(Date f_ingreso) {
+	public void setF_ingreso(Timestamp f_ingreso) {
 		this.f_ingreso = f_ingreso;
 	} 
 	
